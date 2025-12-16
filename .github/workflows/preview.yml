@@ -1,0 +1,24 @@
+name: Deploy PR previews
+
+on:
+  pull_request:
+    branches: [ main ]
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
+      - name: pwd
+        run: pwd
+      - name: Show dist Directory
+        run: ls ./dist
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./dist/
