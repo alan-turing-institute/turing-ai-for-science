@@ -4,6 +4,6 @@ order: 2
 anchor: logistics
 ---
 
-- Date: TBD
-- Location: TBD
-- Contact: TBD
+- Organiser: The Alan Turing Institute, Fundamental Research
+- Date: March 31st, 2026
+- Location: The Royal Society, London
