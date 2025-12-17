@@ -24,19 +24,19 @@
   }
 
   h2 {
-    @apply mt-10 mb-3 text-xl sm:text-2xl font-semibold tracking-tight;
+    @apply mt-8 mb-2 text-lg sm:text-xl font-semibold tracking-tight;
   }
 
   p {
-    @apply leading-7 text-neutral-200;
+    @apply leading-6 text-sm text-neutral-200 mb-4;
   }
 
   ul {
-    @apply list-disc pl-5 leading-7;
+    @apply list-disc pl-5 leading-6 text-sm mb-4;
   }
 
   li {
-    @apply my-1;
+    @apply my-0.5;
   }
 
   hr {

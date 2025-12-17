@@ -1,6 +1,6 @@
 ---
 title: Logistics
-order: 3
+order: 2
 anchor: logistics
 ---
 
