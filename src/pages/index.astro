@@ -7,48 +7,91 @@ const sections = (await getCollection("sections"))
   .sort((a, b) => a.data.order - b.data.order);
 
 const firstSectionAnchor = sections[0]?.data.anchor;
+
+const heroPanels = [
+  {
+    // label: "Earth",
+    image:
+      "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?q=80&w=1800&auto=format&fit=crop"
+  },
+  {
+    // label: "Fusion",
+    image:
+      "gpt_fusion.png"
+  },
+  {
+    // label: "Protein",
+    image:
+      "https://images.unsplash.com/photo-1657244358898-d9e110504fd8?q=80&w=1800&auto=format&fit=crop",
+  },
+];
 ---
 
 <BaseLayout title="Home">
-  <section class="min-h-[100svh] flex flex-col">
-    <div class="flex-1 flex flex-col justify-center pt-4">
-      <!-- <p class="text-sm text-neutral-400">Turing AI for Science</p> -->
-      <h1 class="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
-        Turing AI for Science
-      </h1>
-      <p class="mt-4 text-neutral-300">Description.</p>
-
-      <p class="mt-6 text-neutral-300">The Alan Turing Institute, Fundamental Research</p>
-      <p class="text-neutral-300">Date</p>
-      <p class="text-neutral-300">Location</p>
+  <section class="relative h-screen w-screen overflow-hidden">
+    <div class="absolute inset-0 grid grid-cols-3">
+      {heroPanels.map((panel) => (
+        <div
+          class="relative bg-center bg-cover"
+          style={`background-image: url('${panel.image}');`}
+        >
+          <div class="absolute inset-0 bg-neutral-900/50" />
+          <div class="absolute inset-0 bg-gradient-to-b from-neutral-900/10 via-transparent to-neutral-900/45" />
+          <div class="absolute left-5 right-5 top-5">
+            <p class="m-0 inline-block rounded bg-neutral-900/60 px-2 py-1 text-xs tracking-wide uppercase text-neutral-100">
+              {panel.label}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
 
-    {
-      firstSectionAnchor ? (
-        <div class="pb-10 flex justify-center">
-          <a
-            href={`#${firstSectionAnchor}`}
-            class="no-underline text-2xl text-neutral-300 hover:text-neutral-100"
-            aria-label="Jump to content"
-          >
-            &darr;
-          </a>
-        </div>
-      ) : null
-    }
+    <div class="relative z-10 mx-auto flex h-screen w-full max-w-3xl flex-col justify-between px-6 py-8">
+      <div class="flex items-center justify-between">
+        <img src="/logo@2x.png" alt="Logo 1" class="h-10 sm:h-12 w-auto" />
+        <!-- Add additional logo here -->
+        <!-- <img src="/logo@2x.png" alt="Logo 2" class="h-10 sm:h-12 w-auto" /> -->
+      </div>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="mt-0 text-3xl sm:text-4xl font-semibold tracking-tight">
+          Turing AI for Science
+        </h1>
+        <p class="mt-4 text-neutral-300">Description.</p>
+        <p class="mt-6 text-neutral-300">The Alan Turing Institute, Fundamental Research</p>
+        <p class="text-neutral-300">Date</p>
+        <p class="text-neutral-300">Location</p>
+      </div>
+
+      {
+        firstSectionAnchor ? (
+          <div class="flex justify-center">
+            <a
+              href={`#${firstSectionAnchor}`}
+              class="no-underline text-2xl text-neutral-200 hover:text-neutral-50"
+              aria-label="Jump to content"
+            >
+              &darr;
+            </a>
+          </div>
+        ) : null
+      }
+    </div>
   </section>
 
-  {
-    sections.map(async (entry) => {
-      const { Content } = await entry.render();
-      return (
-        <section id={entry.data.anchor}>
-          <h2 class={entry.data.anchor === firstSectionAnchor ? "mt-0" : undefined}>
-            {entry.data.title}
-          </h2>
-          <Content />
-        </section>
-      );
-    })
-  }
+  <main class="mx-auto w-full max-w-3xl px-6 pt-12 pb-12">
+    {
+      sections.map(async (entry) => {
+        const { Content } = await entry.render();
+        return (
+          <section id={entry.data.anchor}>
+            <h2 class={entry.data.anchor === firstSectionAnchor ? "mt-0" : undefined}>
+              {entry.data.title}
+            </h2>
+            <Content />
+          </section>
+        );
+      })
+    }
+  </main>
 </BaseLayout>

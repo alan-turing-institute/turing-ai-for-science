@@ -15,8 +15,6 @@ const pageTitle = title === "Home" ? siteTitle : `${title} | ${siteTitle}`;
     <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen">
-    <main class="mx-auto w-full max-w-3xl px-6 pt-12 pb-12">
-      <slot />
-    </main>
+    <slot />
   </body>
 </html>

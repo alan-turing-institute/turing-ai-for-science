@@ -43,3 +43,33 @@
     @apply my-12 border-neutral-800;
   }
 }
+
+@layer components {
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .bg-hero {
+    background-image: var(--hero-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .bg-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.6));
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .bg-hero > * {
+    position: relative;
+    z-index: 1;
+  }
+}
