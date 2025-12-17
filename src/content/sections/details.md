@@ -1,7 +1,7 @@
 ---
-title: Logistics
+title: Details
 order: 2
-anchor: logistics
+anchor: details
 ---
 
 - Organiser: The Alan Turing Institute, Fundamental Research
