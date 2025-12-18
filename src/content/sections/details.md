@@ -5,5 +5,5 @@ anchor: details
 ---
 
 - Organiser: The Alan Turing Institute, Fundamental Research
-- Date: March 31st, 2026
+- Date: 31 March 2026
 - Location: The Royal Society, London
